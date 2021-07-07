@@ -28,7 +28,7 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background("White");
+  background("Black");
   roof.display()
   bob1.display()
   bob2.display()
