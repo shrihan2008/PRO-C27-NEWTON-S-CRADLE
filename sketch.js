@@ -20,7 +20,7 @@ function setup() {
 	bob3=new Bob(300,300,40)
 	bob2=new Bob(350,300,40)
 	bob4=new Bob(400,300,40)
-	rope1=new Rope(bob1.body,roof.body,0)
+	roofBody=new Rope(bob1.body,roof.body,0)
 	Engine.run(engine);
   
 }
@@ -28,17 +28,33 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background("Black");
+  background("white");
   roof.display()
   bob1.display()
   bob2.display()
   bob3.display()
   bob4.display()
   bob5.display()
-  rope1.display()
+  roofBody.display()
+  drawLine()
   drawSprites();
  
 }
+
+function keyPressed() { 
+  if (keyCode === UP_ARROW) 
+  {
+     Matter.Body.applyForce(bob1.body,bob1.body.position,{x:-50,y:-45}); 
+     }
+     } 
+     function drawLine(constraint) {
+        bobBodyPosition=constraint.bodyA.position
+         roofBodyPosition=constraint.bodyB.position 
+         roofBodyOffset=constraint.pointB;
+          roofBodyX=roofBodyPosition.x+roofBodyOffset.x 
+          roofBodyY=roofBodyPosition.y+roofBodyOffset.y
+          line(bobBodyPosition.x, bobBodyPosition.y, roofBodyX,roofBodyY); 
+        } 
 
 
 
