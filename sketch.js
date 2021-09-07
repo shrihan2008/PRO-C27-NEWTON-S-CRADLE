@@ -14,13 +14,17 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-    roof=new Roof(300,50,300,20)
+  roof=new Roof(300,50,300,20)
 	bob5=new Bob(200,300,40)
 	bob1=new Bob(250,300,40)
 	bob3=new Bob(300,300,40)
 	bob2=new Bob(350,300,40)
 	bob4=new Bob(400,300,40)
-	roofBody=new Rope(bob1.body,roof.body,0)
+	rope=new Rope(bob1.body,roof.body,0,0)
+  rope2=new Rope(bob3.body,roof.body,0,0)
+  rope1=new Rope(bob2.body,roof.body,0,0)
+  rope3=new Rope(bob4.body,roof.body,0,0)
+  rope4=new Rope(bob5.body,roof.body,0,0)
 	Engine.run(engine);
   
 }
@@ -35,8 +39,13 @@ function draw() {
   bob3.display()
   bob4.display()
   bob5.display()
-  roofBody.display()
-  drawLine()
+  roof.display()
+ rope.display()
+  rope1.display()
+  rope2.display()
+ rope3.display()
+  rope4.display()
+//  drawLine()
   drawSprites();
  
 }
@@ -44,17 +53,7 @@ function draw() {
 function keyPressed() { 
   if (keyCode === UP_ARROW) 
   {
-     Matter.Body.applyForce(bob1.body,bob1.body.position,{x:-50,y:-45}); 
+     Matter.Body.applyForce(bob5.body,bob5.body.position,{x:-300,y:-45}); 
      }
      } 
-     function drawLine(constraint) {
-        bobBodyPosition=constraint.bodyA.position
-         roofBodyPosition=constraint.bodyB.position 
-         roofBodyOffset=constraint.pointB;
-          roofBodyX=roofBodyPosition.x+roofBodyOffset.x 
-          roofBodyY=roofBodyPosition.y+roofBodyOffset.y
-          line(bobBodyPosition.x, bobBodyPosition.y, roofBodyX,roofBodyY); 
-        } 
-
-
-
+  
